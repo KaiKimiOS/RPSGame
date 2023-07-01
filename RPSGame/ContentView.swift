@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var myChoice: String = ""
+    @State var myChoice: String = "?"
     @State var trueFalse:Bool = true
     @State var resultString = ""
     @State var computerString = "?"
@@ -19,12 +19,17 @@ struct ContentView: View {
             Spacer()
             Text("가위바위보 게임")
                 .font(.system(size: 50, weight: .bold, design: .monospaced))
+                .foregroundColor(.yellow)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             
             Spacer()
+            Text("나:\(myChoice)")
+                .font(.system(size: 30, weight: .bold, design: .monospaced))
+                .padding(.bottom, 0.1)
+                .foregroundColor(.blue)
             Text("컴퓨터:\(computerString)")
-                .font(.system(size: 50, weight: .bold, design: .monospaced))
+                .font(.system(size: 30, weight: .bold, design: .monospaced))
                 .padding(.bottom, 0.1)
                 .foregroundColor(.blue)
             if trueFalse != true {
@@ -38,19 +43,19 @@ struct ContentView: View {
                         
                         Button {
                             computerChoice = Int.random(in: 1...3)
-                            myChoice = "가위"
+                            myChoice = "✌️"
                             computerString = "선택완료"
                     
                         } label: {
                             Text( "✌️")
                                 .font(.system(size: 100))
                                 .fixedSize()
-                                .tag("가위")
+                                .tag("✌️")
                         }
                         
                         Button {
                             computerChoice = Int.random(in: 1...3)
-                            myChoice = "바위"
+                            myChoice = "✊"
                             computerString = "선택완료"
        
                             
@@ -58,18 +63,18 @@ struct ContentView: View {
                             Text( "✊")
                                 .font(.system(size: 100))
                                 .fixedSize()
-                                .tag("바위")
+                                .tag("✊")
                         }
                         
                         Button {
                             computerChoice = Int.random(in: 1...3)
-                            myChoice = "보"
+                            myChoice = "🖐️"
                             computerString = "선택완료"
                         } label: {
                             Text( "🖐️")
                                 .font(.system(size: 100))
                                 .fixedSize()
-                                .tag("보")
+                                .tag("🖐️")
                         }
                     }
                     Text("랜덤으로 선택하세요")
@@ -114,7 +119,7 @@ struct ContentView: View {
     
     func rpsAction(index:String){
         
-        if index == "가위" {
+        if index == "✌️" {
             trueFalse = false
             if computerChoice == 1 {
                 resultString = "비겼습니다"
@@ -131,7 +136,7 @@ struct ContentView: View {
             
             
         }
-        if index == "바위" {
+        if index == "✊" {
             trueFalse = false
             if computerChoice == 2 {
                 resultString = "비겼습니다"
@@ -147,7 +152,7 @@ struct ContentView: View {
             }
             
         }
-        if index == "보" {
+        if index == "🖐️" {
             trueFalse = false
             if computerChoice == 3 {
                 resultString = "비겼습니다"
@@ -169,7 +174,7 @@ struct ContentView: View {
     
     func rpsReset(){
         trueFalse = true
-        myChoice = ""
+        myChoice = "?"
         computerChoice = 0
     }
 }
